@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- // Load custom maps for Czech Republics and Ustecky Kraj
+// Load custom maps for Czech Republics and Ustecky Kraj
 import czechrepublic from './countries/czech_republic_by_kraj.geojson';
 import czechrepublicnuts2 from './countries/czech_republic_by_nuts2.geojson';
 import czechrepublicokres from './countries/czech_republic_by_okres.geojson';
@@ -225,9 +225,8 @@ import yemen from './countries/yemen.geojson';
 import zambia from './countries/zambia.geojson';
 import zimbabwe from './countries/zimbabwe.geojson';
 
-
+// name for loaded custom maps
 export const countries = {
-  // name for loaded custom maps
   usteckykrajbyobce,
   usteckykrajbyorp,
   katastralniuzemi,
@@ -236,7 +235,6 @@ export const countries = {
   czechrepublicokres,
   czechrepublicorp,
   czechrepublicobec,
-  
   afghanistan,
   aland,
   albania,
@@ -436,9 +434,8 @@ export const countries = {
   zambia,
   zimbabwe,
 };
-
+// rename czech maps
 export const countryOptions = Object.keys(countries).map(x => {
-  // rename czech maps
   if (x === 'czechrepublic') {
     return [x, 'Česká Republika - Kraje'];
   }
@@ -460,7 +457,6 @@ export const countryOptions = Object.keys(countries).map(x => {
   if (x === 'katastralniuzemi') {
     return [x, 'Česká Republika - Katastrální území'];
   }
-  
   if (x === 'uk' || x === 'usa') {
     return [x, x.toUpperCase()];
   }
