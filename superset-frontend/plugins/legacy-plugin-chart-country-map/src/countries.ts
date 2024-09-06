@@ -16,6 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ // Load custom maps for Czech Republics and Ustecky Kraj
+import czechrepublic from './countries/czech_republic_by_kraj.geojson';
+import czechrepublicnuts2 from './countries/czech_republic_by_nuts2.geojson';
+import czechrepublicokres from './countries/czech_republic_by_okres.geojson';
+import czechrepublicorp from './countries/czech_republic_by_orp.geojson';
+import czechrepublicobec from './countries/czech_republic_by_obec.geojson';
+import usteckykrajbyobce from './countries/ustecky_kraj_by_obce.geojson';
+import usteckykrajbyorp from './countries/ustecky_kraj_by_orp.geojson';
+import katastralniuzemi from './countries/katuze.geojson';
 
 import afghanistan from './countries/afghanistan.geojson';
 import aland from './countries/aland.geojson';
@@ -216,7 +225,18 @@ import yemen from './countries/yemen.geojson';
 import zambia from './countries/zambia.geojson';
 import zimbabwe from './countries/zimbabwe.geojson';
 
+
 export const countries = {
+  // name for loaded custom maps
+  usteckykrajbyobce,
+  usteckykrajbyorp,
+  katastralniuzemi,
+  czechrepublic,
+  czechrepublicnuts2,
+  czechrepublicokres,
+  czechrepublicorp,
+  czechrepublicobec,
+  
   afghanistan,
   aland,
   albania,
@@ -418,6 +438,29 @@ export const countries = {
 };
 
 export const countryOptions = Object.keys(countries).map(x => {
+  // rename czech maps
+  if (x === 'czechrepublic') {
+    return [x, 'Česká Republika - Kraje'];
+  }
+  if (x === 'czechrepublicnuts2') {
+    return [x, 'Česká Republika - NUTS2'];
+  }
+  if (x === 'czechrepublicokres') {
+    return [x, 'Česká Republika - Okresy'];
+  }
+  if (x === 'czechrepublicorp') {
+    return [x, 'Česká Republika - ORP'];
+  }
+  if (x === 'usteckykrajbyobce') {
+    return [x, 'Ústecký Kraj - Obce'];
+  }
+  if (x === 'usteckykrajbyorp') {
+    return [x, 'Ústecký Kraj - ORP'];
+  }
+  if (x === 'katastralniuzemi') {
+    return [x, 'Česká Republika - Katastrální území'];
+  }
+  
   if (x === 'uk' || x === 'usa') {
     return [x, x.toUpperCase()];
   }
