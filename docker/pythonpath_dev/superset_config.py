@@ -121,7 +121,7 @@ CORS_OPTIONS = {
 }
 SUPERSET_FEATURE_EMBEDDED_SUPERSET = True
 
-MAPBOX_API_KEY = env('MAPBOX_API_KEY', '')
+MAPBOX_API_KEY = os.getenv('MAPBOX_API_KEY', '')
 
 #
 # Optionally import superset_config_docker.py (which will have been included on
