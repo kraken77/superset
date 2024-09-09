@@ -121,8 +121,7 @@ CORS_OPTIONS = {
 }
 SUPERSET_FEATURE_EMBEDDED_SUPERSET = True
 
-# Set this API key to enable Mapbox visualizations
-MAPBOX_API_KEY = ""
+MAPBOX_API_KEY = env('MAPBOX_API_KEY', '')
 
 #
 # Optionally import superset_config_docker.py (which will have been included on
@@ -137,9 +136,6 @@ try:
     )
 except ImportError:
     logger.info("Using default Docker config...")
-
-# Set this API key to enable Mapbox visualizations
-MAPBOX_API_KEY = ""
 
 LOG_LEVEL = "DEBUG"
 
