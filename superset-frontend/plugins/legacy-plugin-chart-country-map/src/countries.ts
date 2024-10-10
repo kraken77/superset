@@ -224,6 +224,8 @@ import yemen from './countries/yemen.geojson';
 import zambia from './countries/zambia.geojson';
 import zimbabwe from './countries/zimbabwe.geojson';
 
+
+// name for loaded custom maps
 export const countries = {
   usteckykrajbyobce,
   usteckykrajbyorp,
@@ -433,9 +435,8 @@ export const countries = {
   zambia,
   zimbabwe,
 };
-
+// rename czech maps
 export const countryOptions = Object.keys(countries).map(x => {
-  // rename czech maps
   if (x === 'czechrepublic') {
     return [x, 'Česká Republika - Kraje'];
   }
@@ -457,7 +458,7 @@ export const countryOptions = Object.keys(countries).map(x => {
   if (x === 'katastralniuzemi') {
     return [x, 'Česká Republika - Katastrální území'];
   }
-
+  
   if (x === 'uk' || x === 'usa') {
     return [x, x.toUpperCase()];
   }

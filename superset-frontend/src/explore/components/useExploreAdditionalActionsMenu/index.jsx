@@ -33,6 +33,7 @@ import Button from 'src/components/Button';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { exportChart, getChartKey } from 'src/explore/exploreUtils';
 import downloadAsImage from 'src/utils/downloadAsImage';
+import downloadAsImageSVG from 'src/utils/downloadAsImageSVG';
 import { getChartPermalink } from 'src/utils/urlUtils';
 import copyTextToClipboard from 'src/utils/copy';
 import HeaderReportDropDown from 'src/features/reports/ReportModal/HeaderReportDropdown';
@@ -57,6 +58,7 @@ const MENU_KEYS = {
   EXPORT_TO_JSON: 'export_to_json',
   EXPORT_TO_XLSX: 'export_to_xlsx',
   DOWNLOAD_AS_IMAGE: 'download_as_image',
+  DOWNLOAD_AS_IMAGE_SVG: 'download_as_image_svg',
   SHARE_SUBMENU: 'share_submenu',
   COPY_PERMALINK: 'copy_permalink',
   EMBED_CODE: 'embed_code',
@@ -269,6 +271,22 @@ export const useExploreAdditionalActionsMenu = (
             }),
           );
           break;
+        case MENU_KEYS.DOWNLOAD_AS_IMAGE_SVG:
+          downloadAsImageSVG(
+            '.panel-body .chart-container',
+            // eslint-disable-next-line camelcase
+            slice?.slice_name ?? t('New chart'),
+            true,
+          )(domEvent);
+          setIsDropdownVisible(false);
+          dispatch(
+            logEvent(LOG_ACTIONS_CHART_DOWNLOAD_AS_IMAGE, {
+              chartId: slice?.slice_id,
+              chartName: slice?.slice_name,
+            }),
+          );
+          break;
+
         case MENU_KEYS.COPY_PERMALINK:
           copyLink();
           setIsDropdownVisible(false);

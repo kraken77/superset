@@ -55,6 +55,7 @@ import {
 import { NoAnimationDropdown } from 'src/components/Dropdown';
 import ShareMenuItems from 'src/dashboard/components/menu/ShareMenuItems';
 import downloadAsImage from 'src/utils/downloadAsImage';
+import downloadAsImageSVG from 'src/utils/downloadAsImageSVG';
 import { getSliceHeaderTooltip } from 'src/dashboard/util/getSliceHeaderTooltip';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
@@ -652,6 +653,31 @@ const SliceHeaderControls = (props: SliceHeaderControlsPropsWithRouter) => {
         });
         break;
       }
+      case MenuKeys.DownloadAsImageSVG: {
+        // menu closes with a delay, we need to hide it manually,
+        // so that we don't capture it on the screenshot
+        const menu = document.querySelector(
+          '.ant-dropdown:not(.ant-dropdown-hidden)',
+        ) as HTMLElement;
+        if (menu) {
+          menu.style.visibility = 'hidden';
+        }
+        downloadAsImageSVG(
+          getScreenshotNodeSelector(props.slice.slice_id),
+          props.slice.slice_name,
+          true,
+          // @ts-ignore
+        )(domEvent).then(() => {
+          if (menu) {
+            menu.style.visibility = 'visible';
+          }
+        });
+        props.logEvent?.(LOG_ACTIONS_CHART_DOWNLOAD_AS_IMAGE, {
+          chartId: props.slice.slice_id,
+        });
+        break;
+      }
+
       case MenuKeys.CrossFilterScoping: {
         openScopingModal();
         break;
@@ -911,6 +937,13 @@ const SliceHeaderControls = (props: SliceHeaderControlsPropsWithRouter) => {
             icon={<Icons.FileImageOutlined css={dropdownIconsStyles} />}
           >
             {t('Download as image')}
+          </Menu.Item>
+
+          <Menu.Item
+            key={MenuKeys.DownloadAsImageSVG}
+            icon={<Icons.FileImageOutlined css={dropdownIconsStyles} />}
+          >
+            {t('Download as image SVG')}
           </Menu.Item>
         </Menu.SubMenu>
       )}

@@ -242,6 +242,7 @@ export type Slice = {
 
 export enum MenuKeys {
   DownloadAsImage = 'download_as_image',
+  DownloadAsImageSVG = 'download_as_image_svg',
   ExploreChart = 'explore_chart',
   ExportCsv = 'export_csv',
   ExportPivotCsv = 'export_pivot_csv',
