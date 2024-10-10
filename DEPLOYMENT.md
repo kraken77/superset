@@ -38,6 +38,8 @@ Consider setting a more restrictive CORS policy in `CORS_OPTIONS` in `docker/pyt
 
 DO NOT delete the db service in the compose file, as it contains the example database.
 
+Set `MAPBOX_API_KEY` in `.env` which you can generate on [this site](https://account.mapbox.com/access-tokens/), but it requires credit card details, ask your supervisor.
+
 # Český transkript
 
 # Instrukce pro instalaci
@@ -78,3 +80,5 @@ Pravděpodobně budete muset změnit všechno, co obsahuje slovo secret, udělej
 Zvažte nastavení více restriktivní politiky CORS v `CORS_OPTIONS` v `docker/pythonpath_dev/superset_config.py`.
 
 NEMAŽTE službu db v souboru compose, protože obsahuje ukázkovou databázi.
+
+Poskytněte `MAPBOX_API_KEY` v `.env`, který lze vygenerovat na [této stránce](https://account.mapbox.com/access-tokens/), ale vyžaduje to poskytnutí kreditní karty, kontaktujte svého nadřízeného.
